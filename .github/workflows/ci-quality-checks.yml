@@ -28,7 +28,7 @@ jobs:
     test-shard:
         name: test shard (${{ matrix.shard-index }}/${{ matrix.shard-total }})
         if: github.repository == 'dream-num/univer' && (github.event_name != 'pull_request' || !github.event.pull_request.draft)
-        runs-on: ubuntu-latest
+        runs-on: [self-hosted, linux, x64]
         timeout-minutes: 15
         strategy:
             matrix:
@@ -76,7 +76,7 @@ jobs:
 
     eslint:
         if: github.repository == 'dream-num/univer' && (github.event_name != 'pull_request' || !github.event.pull_request.draft)
-        runs-on: ubuntu-latest
+        runs-on: [self-hosted, linux, x64]
         timeout-minutes: 10
 
         steps:
@@ -109,7 +109,7 @@ jobs:
 
     typecheck:
         if: github.repository == 'dream-num/univer' && (github.event_name != 'pull_request' || !github.event.pull_request.draft)
-        runs-on: ubuntu-latest
+        runs-on: [self-hosted, linux, x64]
         timeout-minutes: 15
         env:
             TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
